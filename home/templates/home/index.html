@@ -1,0 +1,45 @@
+{% extends 'home/base.html' %}
+
+{% block menu %}
+<a class="nav-link active" aria-current="page" href="{% url 'news:home' %}">Главная</a>
+<a class="nav-link" href="{% url 'blogs:all_blogs' %}">Блоги</a>
+<a class="nav-link" href="#">Резюме</a>
+<a class="nav-link" href="{% url 'about:contact' %}">Обратная связь</a>
+{% endblock %}
+
+{% block contents %}
+
+{% load static %}
+<header class="home text-center pt-5  col-sm-12">
+    <div class="col"></div>
+    <div class="home_text mx-auto pt-3 col-sm-12 col-xl-5">
+        <h1 class="mt-5 col-sm-12">христофоров илья</h1>
+        <h2>Добро пожаловать на мой личный сайт</h2>
+        <div class="home_text_descr mt-3 col-sm-12">
+            На этом сайте вы сможете изучить текущие проекты, проследить за моим блогом
+            <br> и связаться со мной через одну из социальный сетей и посмотреть резюме
+        </div>
+    </div>
+    <div class="col"></div>
+</header>
+
+<section class="news mt-5">
+    <div class="container">
+        <div class="row">
+            {% for i in data %}
+              <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12">
+                  <div class="card" style="width: 18rem;">
+                      <img src="{{i.image.url}}" class="card-img-top" alt="{{ i.title }}">
+                      <div class="card-body">
+                          <h5 class="card-title">{{ i.title }}</h5>
+                          <p class="card-text">{{ i.description|truncatechars:100 }}</p>
+                          <a href="{% url 'news:detail' i.id%}" class="btn btn-primary">Кнопка на полную статью</a>
+                      </div>
+                    </div>
+              </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+{% endblock %}
