@@ -17,12 +17,12 @@
 	<section class="blogs">
 			<div class="container">
 				{% for blog in data %}
-						<div class="card" style="width: 70%;">
+						<div class="card mx-auto col-12 col-md-6" style="width: 70%;">
 							<div class="card-body">
 								<h5 class="card-title">{{blog.title}}</h5>
 								<p class="card-text">{{blog.date}}</p>
 								<p class="card-text">{{blog.description|truncatechars:300}}</p>
-								<a href="{% url 'blogs:detail' blog.id %}" class="btn btn-primary">Go somewhere</a>
+								<a href="{% url 'blogs:detail' blog.id %}" class="btn btn-primary">Читать</a>
 							</div>
 					</div>
 				{% endfor %}
