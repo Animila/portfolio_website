@@ -1,0 +1,31 @@
+{% extends 'home/base.html' %}
+
+{% block menu %}
+<a class="nav-link" aria-current="page" href="{% url 'news:home' %}">Главная</a>
+<a class="nav-link active" href="{% url 'blogs:all_blogs' %}">Блоги</a>
+<a class="nav-link" href="#">Резюме</a>
+<a class="nav-link" href="{% url 'about:contact' %}">Обратная связь</a>
+{% endblock %}
+
+{% block contents %}
+	<header class="m-5">
+			<h1 class="text-center">БЛОГИ</h1>
+	</header>
+
+	<hr>
+
+	<section class="blogs">
+			<div class="container">
+				{% for blog in data %}
+						<div class="card" style="width: 70%;">
+							<div class="card-body">
+								<h5 class="card-title">{{blog.title}}</h5>
+								<p class="card-text">{{blog.date}}</p>
+								<p class="card-text">{{blog.description|truncatechars:300}}</p>
+								<a href="{% url 'blogs:detail' blog.id %}" class="btn btn-primary">Go somewhere</a>
+							</div>
+					</div>
+				{% endfor %}
+			</div>
+	</section>
+{% endblock %}
