@@ -21,7 +21,7 @@
 							<div class="card-body">
 								<h5 class="card-title">{{blog.title}}</h5>
 								<p class="card-text">{{blog.date}}</p>
-								<p class="card-text">{{blog.description|truncatechars:300}}</p>
+								<p class="card-text">{{blog.description|safe|truncatechars:50}}</p>
 								<a href="{% url 'blogs:detail' blog.id %}" class="btn btn-primary">Читать</a>
 							</div>
 					</div>
