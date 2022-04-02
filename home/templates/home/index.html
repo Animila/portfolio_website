@@ -1,12 +1,5 @@
 {% extends 'home/base.html' %}
 
-{% block menu %}
-<a class="nav-link active" aria-current="page" href="{% url 'news:home' %}">Главная</a>
-<a class="nav-link" href="{% url 'blogs:all_blogs' %}">Блоги</a>
-<a class="nav-link" href="#">Резюме</a>
-<a class="nav-link" href="{% url 'about:contact' %}">Обратная связь</a>
-{% endblock %}
-
 {% block contents %}
 
 {% load static %}
