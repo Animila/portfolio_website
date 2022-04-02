@@ -1,9 +1,9 @@
 from django.urls import path
-from . import views
+from .views import detail, home
 
-app_name = 'news'
+app_name = 'home'
 
 urlpatterns = [
-    path('', views.home, name="home"),
-    path('<int:news_id>/', views.detail, name='detail')
+    path('', home, name="home"),
+    path('<int:news_id>/', detail, name='detail'),
 ]

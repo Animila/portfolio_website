@@ -10,7 +10,7 @@
         <h2>Добро пожаловать на мой личный сайт</h2>
         <div class="home_text_descr mt-3 col">
             На этом сайте вы сможете изучить текущие проекты, проследить за моим блогом
-            <br> и связаться со мной через одну из социальный сетей и посмотреть резюме
+            <br> и связаться со мной через одну из социальных сетей и посмотреть резюме
         </div>
     </div>
     <div class="col"></div>
@@ -25,7 +25,7 @@
                     <div class="card-body">
                         <h5 class="card-title">{{ i.title }}</h5>
                         <p class="card-text">{{ i.description|truncatechars:100 }}</p>
-                        <a href="{% url 'news:detail' i.id%}" class="btn btn-primary">Читать</a>
+                        <a href="{% url 'home:detail' i.id%}" class="btn btn-primary">Читать</a>
                     </div>
                 </div>
             {% endfor %}
