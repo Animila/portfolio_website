@@ -19,6 +19,11 @@ def detail(request, news_id):
     return render(request, 'home/detail.html', context)
 
 
+def about(request):
+    context = {
+        'title': 'Главная',
+    }
+    return render(request, 'home/about.html', context)
 
 
 
