@@ -3,18 +3,85 @@
 
 
 {% block contents %}
-    <section class="news detail">
-        <div class="container">
-            <img src="{{data.image.url}}" alt="">
-            <h2 class="mt-4">{{ data.title }}</h2>
-            <br>
-            {{data.time}}
-            <hr>
-            <br>
-            {{data.description|safe}}
-            <br>
-            <br>
-            <a href="{% url 'home:home' %}" class="btn btn-primary">Назад</a>
+<br>
+<h2 class="text-center">ВИД ПОЛНОСТЬЮ</h2>
+<section class="detail">
+    <div class="container">
+        {% if data.image %}
+        <img class="img" src="{{ data.image.url }}" alt="">
+        {% endif %}
+        <h2 class="mt-4">{{ data.title }}</h2>
+        <br>
+        {{data.time}}
+        <hr>
+        <br>
+        {{data.description|safe}}
+        <br>
+        <br>
+        <a href="{% url 'home:home' %}" class="btn btn-primary">Назад</a>
+    </div>
+</section>
+<br>
+<h2 class="text-center">ВИД КАРТОЧКИ</h2>
+<section class="news mt-5">
+    <div class="container">
+        <div class="row">
+            <div class="card col-12 mx-auto" style="width: 18rem; margin-bottom: 20px;">
+                {% if data.image %}
+                    <img src="/media/{{data.image}}" class="card-img-top mt-3" alt="{{ i.title }}">
+                    {% endif %}
+                <div class="card-body">
+                    <h5 class="card-title">{{ data.title }}</h5>
+                    <p class="card-text">{{ data.description|truncatechars:100 }}</p>
+                    <a href="{% url 'home:detail' data.id%}" class="btn btn-primary">Читать</a>
+                </div>
+            </div>
         </div>
-    </section>
+    </div>
+</section>
+<hr>
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <h2 class="text-center">Редактирование</h2>
+    </div>
+  </div>
+  <div class="row justify-content-center">
+        <div class="col-sm-6">
+          <div class="card">
+            <form method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+
+                <div class="mb-3">
+                  <label for="{{ form.title.id_for_label }}" class="form-label">Заголовок</label>
+                    {{ form.title }}
+                </div>
+
+                <label for="{{ form.time.id_for_label }}">Введите дату:</label>
+                {{ form.time }}
+
+                <label for="{{ form.description.id_for_label }}">Текст</label>
+                {{ form.description }}
+
+                <div class="mb-3">
+                    <label for="{{ form.image.id_for_label }}" class="form-label">Изображение</label>
+                    {{ form.image }}
+                </div>
+
+                <button type="submit" class="btn btn-primary">Сохранить</button>
+
+            </form>
+              {% if data %}
+                <form method="POST" action="{% url 'cabinet:delete' data.id %}">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-danger">Удалить</button>
+                </form>
+              {% endif %}
+          </div>
+        <a href="{% url 'cabinet:index' %}" class="btn btn-primary">Назад</a>
+        </div>
+  </div>
+
+
+</div>
 {% endblock %}

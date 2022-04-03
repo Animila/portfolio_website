@@ -3,13 +3,13 @@
 
 
 {% block contents %}
-<div class="container">
+<div class="container news detail">
   <div class="row">
     <div class="col">
       <h2 class="text-center">Статья</h2>
     </div>
   </div>
-  <div class="row justify-content-center">
+  <div class="row justify-content-center news detail">
         <div class="col-sm-6">
           <div class="card">
             <form method="POST" enctype="multipart/form-data">
@@ -32,7 +32,6 @@
                 </div>
 
                 <button type="submit" class="btn btn-primary">Сохранить</button>
-
             </form>
           </div>
         <a href="{% url 'cabinet:index' %}" class="btn btn-primary">Назад</a>

@@ -3,9 +3,11 @@
 
 
 {% block contents %}
-    <section class="news detail">
-        <div class="container">
-            <img src="{{data.image.url}}" alt="">
+    <section class="news">
+        <div class="container detail">
+            {% if data.image %}
+            <img class="img" src="{{ data.image.url }}" alt="{{ data.title }}">
+            {% endif %}
             <h2 class="mt-4">{{ data.title }}</h2>
             <br>
             {{data.time}}

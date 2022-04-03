@@ -1,5 +1,5 @@
 from django.http import HttpResponseRedirect
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.admin.views.decorators import staff_member_required
 from django.urls import reverse
 
@@ -16,11 +16,7 @@ def cabinet(request):
 
     return render(request, 'cabinet/index.html', context)
 
-
-def redactory(request, news_pk):
-    return render(request, 'cabinet/detail.html')
-
-
+@staff_member_required
 def create(request):
     if request.method == 'POST':
         data = NewsForm(data=request.POST, files=request.FILES)
@@ -34,3 +30,28 @@ def create(request):
         'form': data
     }
     return render(request, 'cabinet/create.html', context)
+
+@staff_member_required
+def update(request, news_pk):
+    data = get_object_or_404(News, pk=news_pk)
+    if request.method == 'POST':
+        try:
+            form = NewsForm(request.POST, instance=data, files=request.FILES)
+            form.save()
+        except ValueError:
+            print('ошибка')
+    else:
+        form = NewsForm(instance=data)
+    context = {
+        'data': data,
+        'form': form,
+        'title': 'Новости',
+    }
+    return render(request, 'cabinet/detail.html', context)
+
+@staff_member_required
+def delete(request, news_pk):
+    data_news = get_object_or_404(News, pk=news_pk)
+    if request.method == 'POST':
+        data_news.delete()
+        return HttpResponseRedirect(reverse('cabinet:index'))

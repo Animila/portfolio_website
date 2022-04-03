@@ -3,7 +3,7 @@
 
 
 {% block contents %}
-<div class="container">
+<div class="container cabinet">
   <div class="row">
     <div class="col">
       <h2 class="text-center">Кабинет</h2>
@@ -23,14 +23,12 @@
           <div class="card">
               <div class="card-body">
                 <h5 class="card-title">{{ i.title }}</h5>
-                <a href="{% url 'cabinet:detail' i.id %}" class="btn btn-primary">Редактировать</a>
+                <a href="{% url 'cabinet:update' i.id %}" class="btn btn-primary">Редактировать</a>
               </div>
           </div>
             <br>
         </div>
       {% endfor %}
   </div>
-
-
 </div>
 {% endblock %}

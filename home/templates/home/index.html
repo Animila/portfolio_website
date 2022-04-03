@@ -21,7 +21,9 @@
         <div class="row">
             {% for i in data %}
                 <div class="card col-12 mx-auto" style="width: 18rem; margin-bottom: 20px;">
-                    <img src="{{i.image.url}}" class="card-img-top mt-3" alt="{{ i.title }}">
+                    {% if i.image %}
+                    <img src="/media/{{i.image}}" class="card-img-top mt-3" alt="{{ i.title }}">
+                    {% endif %}
                     <div class="card-body">
                         <h5 class="card-title">{{ i.title }}</h5>
                         <p class="card-text">{{ i.description|truncatechars:100 }}</p>
