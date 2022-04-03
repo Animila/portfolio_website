@@ -3,36 +3,42 @@
 {% block contents %}
 
 {% load static %}
-<header class="home text-center pt-5  col-12">
+<header class="home_head text-center pt-5  col-12">
     <div class="col"></div>
-    <div class="home_text mx-auto pt-3 col-12 col-sm-12 col-md-6">
-        <h1 class="mt-5 col">христофоров илья</h1>
+    <div class="home_head_text mx-auto pt-3 col-12 col-sm-12 col-md-6">
+        <h1 class="mt-5 col fw-bold">христофоров илья</h1>
         <h2>Добро пожаловать на мой личный сайт</h2>
-        <div class="home_text_descr mt-3 col">
+        <div class="home_head_text_descr mt-3 col">
             На этом сайте вы сможете изучить текущие проекты, проследить за моим блогом
             <br> и связаться со мной через одну из социальных сетей и посмотреть резюме
         </div>
+        <br><br>
     </div>
-    <div class="col"></div>
+
 </header>
 
 <section class="news mt-5">
     <div class="container">
-        <div class="row">
             {% for i in data %}
-                <div class="card col-12 mx-auto" style="width: 18rem; margin-bottom: 20px;">
-                    {% if i.image %}
-                    <img src="/media/{{i.image}}" class="card-img-top mt-3" alt="{{ i.title }}">
-                    {% endif %}
-                    <div class="card-body">
-                        <h5 class="card-title">{{ i.title }}</h5>
-                        <p class="card-text">{{ i.description|truncatechars:100 }}</p>
-                        <a href="{% url 'home:detail' i.id%}" class="btn btn-primary">Читать</a>
+                <div class="card mb-3">
+                    <div class="card-horizontal">
+                        {% if i.image %}
+                        <div class="img-square-wrapper">
+                            <img class="" src="/media/{{ i.image }}" alt="Card image cap">
+                        </div>
+                        {% endif %}
+                        <div class="card-body">
+                            <h4 class="card-title">{{ i.title }}</h4>
+                            <p class="card-text">{{ i.description|truncatechars:100 }}</p>
+                            <a href="{% url 'home:detail' i.id%}" class="btn btn-primary">Читать</a>
+                        </div>
                     </div>
                 </div>
+
             {% endfor %}
-        </div>
     </div>
 </section>
+
+
 
 {% endblock %}
