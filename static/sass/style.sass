@@ -1,6 +1,7 @@
 
 // главная страница
-.home
+// шапка
+.home_head
     color: #fff
     min-height: 500px
     background: url('../img/bg/index_header.png') center center/cover no-repeat
@@ -14,13 +15,13 @@
         h1
             text-transform: uppercase
             font-size: 50px
-            font-weight: 700
         &_descr
             font-size: 20px
 
+// блок новостей
 .news
     min-height: 600px
-    .card-text
+    .card
         min-height: 30px
     .detail
         min-height: 800px
@@ -29,18 +30,7 @@
             width: 20%
             float: left
 
-
-footer
-    position: absolute
-    width: 100%
-    min-height: 60px
-    background-color: #000
-    color: white
-
-// страница всех блогов
-.blogs
-    min-height: 900px
-
+// Детальнные информации
 // страница о блоге
 .detail
     min-height: 200px
@@ -50,13 +40,12 @@ footer
         float: left
 
 // страница о себе
+// шапка с ссылками
 .social
     min-height: 500px
     background: url('../img/bg/index_header.png') center center/cover no-repeat
-    &_media
-        display: flex
-        justify-content: space-around
 
+// блок о контактной информации
 .contact
     min-height: 400px
     &_descr
@@ -70,8 +59,24 @@ footer
             text-decoration: none
 
 
-.cabinet
-    min-height: 830px
+.card-horizontal
+    display: flex
+    flex: 1 1 auto
+    img
+        max-width: 200px
+
+
+
+// футер
+footer
+    width: 100%
+    min-height: 60px
+    background-color: #000
+    color: white
+
+
+
+
 
 @media (max-width: 842px)
 
@@ -82,3 +87,8 @@ footer
             font-size: 17px
         &_descr
             font-size: 17px
+            
+    .card-horizontal
+        img
+            max-width: 100px
+
